@@ -25,4 +25,21 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         $database->setAsGlobal();
     }
 
+    protected function migrateTables()
+    {
+        DB::schema()->create('posts', function ($table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->timestamps();
+        });
+    }
+
+    protected function makePost()
+    {
+        $post = new Post;
+        $post->title = 'Some title';
+        $post->save();
+
+        return $post;
+    }
 }
