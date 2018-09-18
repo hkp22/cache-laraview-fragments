@@ -1,0 +1,43 @@
+{
+    "name": "hkp22/cache-laraview-fragments",
+    "description": "Caching Laravel view's fragments.",
+    "license": "MIT",
+    "keywords": ["laravel", "cache", "fragments cache", "view cache"],
+    "authors": [
+        {
+            "name": "Harish Kumar",
+            "email": "harishpra22@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.6|^7.0",
+        "illuminate/support": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hkp22\\CacheLaraViewFragments\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.2",
+        "illuminate/database": "^5.1",
+        "illuminate/cache": "^5.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hkp22\\Tests\\CacheLaraViewFragments\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hkp22\\CacheLaraViewFragments\\CacheLaraViewFragmentServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable" : true
+}
