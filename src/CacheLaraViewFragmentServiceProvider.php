@@ -4,6 +4,8 @@ namespace Hkp22\CacheLaraViewFragments;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Http\Kernel;
+
 
 class CacheLaraViewFragmentServiceProvider extends ServiceProvider
 {
@@ -12,8 +14,12 @@ class CacheLaraViewFragmentServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Kernel $kernel)
     {
+        if ($this->app->isLocal()) {
+            $kernel->pushMiddleware('Hkp22\CacheLaraViewFragments\Middleware\FlushViewCache');
+        }
+
         Blade::directive('cache', function ($expression) {
             return "<?php if (! app('Hkp22\CacheLaraViewFragments\CacheBladeDirective')->setUp({$expression})) : ?>";
         });

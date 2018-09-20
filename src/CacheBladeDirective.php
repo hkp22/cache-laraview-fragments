@@ -72,6 +72,8 @@ class CacheBladeDirective
             return md5($item);
         }
 
+        ob_get_clean();
+        
         throw new \Exception('Could not determine an appropriate cache key.');
     }
 }
